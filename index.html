@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Who delivers under pressure? · Dev Uppal</title>
+<meta name="description" content="Dev Uppal · SupeRR Selector Season 2 · Round 1. Pressure top tens for batting and bowling, the method, the evidence and stability checks.">
+<style>
+/* Editorial scroll story: navy floodlit opening, then warm-white chapters with a 68ch prose column and a 1100px band for lists and charts. */
+:root {
+  --paper: #FBF8F2;
+  --paper-2: #F2ECE1;
+  --ink: #13254A;
+  --ink-2: #0B1830;
+  --ink-soft: #4E5B73;
+  --rule: #DED6C8;
+  --teal: #10796F;
+  --teal-bright: #3FC1B0;
+  --teal-soft: #D7ECE8;
+  --gold: #A9781C;
+  --gold-bright: #E2B34E;
+  --gold-soft: #F6E9C9;
+  --grey: #9AA3B2;
+  --font: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --ease: cubic-bezier(.2, .75, .2, 1);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.6; font-variant-numeric: tabular-nums; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+.wrap { max-width: 1100px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.prose { max-width: 68ch; }
+h1, h2, h3 { margin: 0; font-weight: 700; text-wrap: balance; }
+p { margin: 0 0 14px; }
+a { color: var(--teal); }
+:focus-visible { outline: 3px solid var(--gold-bright); outline-offset: 3px; border-radius: 4px; }
+.muted { color: var(--ink-soft); }
+.small { font-size: 0.9rem; }
+
+/* ---------- scroll progress + chapter dots ---------- */
+.progress { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 50; background: transparent; }
+.progress i { display: block; height: 100%; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--teal-bright), var(--gold-bright)); }
+.dots { position: fixed; right: max(18px, env(safe-area-inset-right, 0px)); top: 50%; transform: translateY(-50%); z-index: 40; display: flex; flex-direction: column; gap: 14px; }
+.dots a { position: relative; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--grey); background: transparent; display: block; transition: background .3s, border-color .3s, transform .3s; }
+.dots a.on { background: var(--teal); border-color: var(--teal); transform: scale(1.25); }
+.dots a.dark { border-color: rgba(255,255,255,.5); }
+.dots a.dark.on { background: var(--teal-bright); border-color: var(--teal-bright); }
+.dots a span { position: absolute; right: 22px; top: 50%; transform: translateY(-50%); white-space: nowrap; font-size: 0.78rem; font-weight: 700; color: var(--ink); background: var(--paper); padding: 3px 8px; border-radius: 6px; opacity: 0; pointer-events: none; transition: opacity .2s; box-shadow: 0 2px 10px rgba(19,37,74,.12); }
+.dots a:hover span, .dots a:focus-visible span { opacity: 1; }
+
+/* ---------- hero ---------- */
+.hero { position: relative; overflow: hidden; color: #fff; background: radial-gradient(120% 90% at 85% 0%, #1F3C6E 0%, var(--ink) 45%, var(--ink-2) 100%); padding-block: 96px 64px; }
+.hero::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 1px, transparent 1px 110px); pointer-events: none; }
+.hero .glow { position: absolute; width: 620px; height: 620px; right: -160px; top: -220px; border-radius: 50%; background: radial-gradient(circle, rgba(63,193,176,.28), transparent 65%); pointer-events: none; }
+.hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, .65fr); gap: 40px; align-items: center; }
+.eyebrow { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal-bright); margin-bottom: 18px; }
+h1 { font-size: clamp(2.6rem, 7.4vw, 5.4rem); line-height: 1.0; letter-spacing: -0.03em; }
+h1 .w { display: inline-block; }
+.byline { margin-top: 22px; font-size: 1.02rem; color: #BFD3EE; }
+.hero .lede { margin-top: 26px; font-size: 1.18rem; line-height: 1.6; color: #E1E9F5; max-width: 56ch; }
+.ball { width: 100%; max-width: 300px; justify-self: center; aspect-ratio: 1; filter: drop-shadow(0 30px 50px rgba(0,0,0,.45)); }
+.ball .spin { transform-origin: 150px 150px; }
+.stats { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 56px; }
+.stats div { border-top: 2px solid rgba(63,193,176,.6); padding-top: 14px; }
+.stats b { display: block; font-size: clamp(1.8rem, 4.4vw, 2.8rem); line-height: 1.05; letter-spacing: -0.01em; }
+.stats span { font-size: 0.92rem; color: #BFD3EE; }
+.cue { position: relative; margin-top: 48px; display: inline-flex; align-items: center; gap: 10px; color: #BFD3EE; font-size: 0.85rem; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; }
+.cue svg { width: 18px; height: 18px; }
+
+/* ---------- chapters ---------- */
+.chapter { position: relative; padding-block: 104px; }
+.chapter + .chapter { border-top: 1px solid var(--rule); }
+.chap-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 28px; align-items: start; margin-bottom: 18px; }
+.chap-no { font-size: clamp(3.2rem, 8vw, 5.6rem); line-height: .85; font-weight: 700; color: transparent; -webkit-text-stroke: 2px var(--teal); letter-spacing: -0.04em; }
+.kicker { font-size: 0.8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+h2 { font-size: clamp(1.8rem, 4vw, 2.7rem); line-height: 1.1; letter-spacing: -0.02em; }
+.intro { font-size: 1.08rem; color: var(--ink-soft); margin-top: 14px; }
+h3 { font-size: 1.12rem; line-height: 1.3; }
+
+/* ---------- top tens ---------- */
+.tens { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 44px; }
+.tens > div { min-width: 0; }
+.tens h3 { font-size: 0.95rem; letter-spacing: .14em; text-transform: uppercase; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+.tens ol { list-style: none; margin: 0; padding: 0; }
+.tens li { display: flex; align-items: center; gap: 16px; padding: 11px 6px; border-bottom: 1px solid var(--rule); font-size: 1.08rem; border-radius: 8px; transition: background .25s, transform .25s var(--ease); }
+.tens li:hover { background: var(--paper-2); transform: translateX(4px); }
+.tens .rk { width: 32px; height: 32px; flex: none; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; background: var(--paper-2); }
+.tens li.first { font-weight: 700; font-size: 1.2rem; position: relative; overflow: hidden; background: linear-gradient(90deg, var(--gold-soft), transparent 80%); }
+.tens li.first .rk { background: var(--gold-bright); color: var(--ink-2); }
+.tens li.first .tag1 { margin-left: auto; font-size: 0.72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+.tens li.first::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.65) 50%, transparent 70%); transform: translateX(-120%); pointer-events: none; }
+.motion .tens li.first.in::after { animation: shine 1.6s .9s var(--ease) both; }
+@keyframes shine { to { transform: translateX(120%); } }
+.tablist { display: flex; gap: 8px; margin-top: 30px; }
+.tens-tabs { display: none; }
+.tab { font: inherit; font-weight: 700; font-size: 0.95rem; padding: 9px 20px; border-radius: 999px; border: 2px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; transition: background .2s, color .2s; }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--paper); }
+.firstnote { margin-top: 32px; font-size: 1.05rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 26px; }
+.btn { font: inherit; font-size: 0.95rem; font-weight: 700; border-radius: 999px; padding: 12px 22px; cursor: pointer; border: 2px solid var(--ink); background: var(--ink); color: var(--paper); text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: transform .2s var(--ease), background .2s, border-color .2s, box-shadow .2s; }
+.btn:hover { background: var(--teal); border-color: var(--teal); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(16,121,111,.28); }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.ghost:hover { color: var(--paper); }
+.btn svg { width: 16px; height: 16px; }
+
+/* ---------- method timeline ---------- */
+.timeline { list-style: none; margin: 48px 0 0; padding: 0; position: relative; display: grid; gap: 34px; }
+.timeline::before { content: ""; position: absolute; left: 23px; top: 8px; bottom: 8px; width: 3px; background: var(--rule); border-radius: 3px; }
+.timeline .fill { position: absolute; left: 23px; top: 8px; width: 3px; height: calc((100% - 16px) * var(--p, 1)); background: linear-gradient(var(--teal-bright), var(--teal)); border-radius: 3px; }
+.timeline li { position: relative; display: grid; grid-template-columns: 50px minmax(0, 1fr); gap: 22px; }
+.timeline .n { width: 50px; height: 50px; border-radius: 50%; background: var(--paper); border: 3px solid var(--rule); color: var(--ink-soft); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.05rem; position: relative; z-index: 1; transition: background .4s, border-color .4s, color .4s, transform .4s var(--ease); }
+.timeline li.lit .n { background: var(--teal); border-color: var(--teal); color: #fff; transform: scale(1.06); }
+.timeline h3 { font-size: 1.25rem; margin: 10px 0 6px; }
+.timeline p { margin: 0; max-width: 62ch; }
+.elig { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 56px 0 22px; max-width: 760px; }
+.elig div { background: var(--ink); color: #fff; border-radius: 16px; padding: 20px 22px; }
+.elig b { font-size: 2.2rem; display: block; line-height: 1.05; }
+.elig span { font-size: 0.9rem; color: #BFD3EE; }
+details.method { margin-top: 26px; border: 1px solid var(--rule); border-radius: 14px; background: #fff; }
+details.method summary { cursor: pointer; padding: 16px 20px; font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+details.method summary::-webkit-details-marker { display: none; }
+details.method summary::after { content: "+"; font-size: 1.4rem; color: var(--teal); transition: transform .3s var(--ease); }
+details.method[open] summary::after { transform: rotate(45deg); }
+details.method dl { margin: 0; padding: 0 20px 14px; }
+details.method dt { font-weight: 700; margin-top: 12px; }
+details.method dd { margin: 4px 0 0; font-size: 0.95rem; }
+
+/* ---------- evidence ---------- */
+.ev-grid { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 40px; margin-top: 28px; align-items: start; }
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.96rem; }
+th { text-align: left; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); padding: 0 10px 12px; border-bottom: 2px solid var(--ink); vertical-align: bottom; line-height: 1.3; }
+td { padding: 11px 10px; border-bottom: 1px solid var(--rule); }
+tbody tr { transition: background .2s; }
+tbody tr:hover { background: var(--paper-2); }
+.num { text-align: right; }
+tr.first td { background: var(--gold-soft); }
+tr.first td:first-child { box-shadow: inset 4px 0 0 var(--gold-bright); }
+tr.first td.nm { font-weight: 700; }
+.pcell { display: flex; align-items: center; gap: 10px; justify-content: flex-end; }
+.pbar { width: 70px; height: 8px; background: var(--paper-2); border-radius: 4px; overflow: hidden; flex: none; }
+.pbar i { display: block; height: 100%; background: linear-gradient(90deg, var(--teal), var(--teal-bright)); border-radius: 4px; transform-origin: 0 50%; }
+.defs { font-size: 0.92rem; background: var(--paper-2); border-radius: 14px; padding: 18px 20px; }
+.defs dl { margin: 0; }
+.defs dt { font-weight: 700; color: var(--teal); }
+.defs dd { margin: 2px 0 12px; }
+.defs dd:last-child { margin-bottom: 0; }
+.cards { display: none; list-style: none; padding: 0; margin: 0; }
+.cards details { border-bottom: 1px solid var(--rule); }
+.cards summary { list-style: none; cursor: pointer; display: flex; gap: 12px; align-items: center; padding: 13px 4px; font-weight: 700; }
+.cards summary::-webkit-details-marker { display: none; }
+.cards summary .rk { width: 28px; color: var(--ink-soft); }
+.cards summary .chev { margin-left: auto; color: var(--teal); font-size: 0.85rem; }
+.cards details[open] .chev::after { content: " ▲"; }
+.cards details:not([open]) .chev::after { content: " ▼"; }
+.cards dl { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; margin: 0 0 12px; padding: 0 4px 0 44px; font-size: 0.92rem; }
+.cards dd { margin: 0; text-align: right; font-weight: 700; }
+.cards li.first summary { color: var(--gold); }
+.compare { margin-top: 56px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; }
+.compare > div { min-width: 0; }
+.chart { margin-top: 12px; }
+.chart svg { display: block; max-width: 100%; overflow: visible; }
+.caption { font-size: 0.9rem; color: var(--ink-soft); margin-top: 8px; }
+.balls { display: grid; gap: 12px; margin-top: 14px; }
+.dball { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 14px; padding: 14px 16px; background: #fff; border: 1px solid var(--rule); border-radius: 14px; font-size: 0.92rem; line-height: 1.45; transition: transform .25s var(--ease), box-shadow .25s; }
+.dball:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(19,37,74,.1); }
+.dball .cr { font-weight: 700; font-size: 1.25rem; line-height: 1.2; }
+.dball .cr small { display: block; font-size: 0.72rem; font-weight: 400; color: var(--ink-soft); }
+.dball.pos .cr { color: var(--teal); }
+
+/* ---------- scenarios ---------- */
+.scens { display: grid; gap: 24px; margin-top: 36px; }
+.scen { background: #fff; border: 1px solid var(--rule); border-radius: 18px; padding: 24px 26px; transition: box-shadow .3s; }
+.scen:hover { box-shadow: 0 18px 40px rgba(19,37,74,.08); }
+.scen-top { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.scen-top h3 { font-size: 1.3rem; }
+.pill { font-size: 0.8rem; font-weight: 700; padding: 4px 11px; border-radius: 999px; }
+.pill.hi { background: var(--teal-soft); color: var(--teal); }
+.pill.lo { background: var(--paper-2); color: var(--ink-soft); }
+.pill.hi::before { content: "▲ "; }
+.pill.lo::before { content: "○ "; }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 12px 0 6px; font-size: 0.96rem; }
+.outcome-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .5s var(--ease); }
+.outcome-wrap.open { grid-template-rows: 1fr; }
+.outcome-wrap > div { overflow: hidden; }
+.outcome { margin: 12px 0 0; padding: 12px 16px; background: var(--paper-2); border-radius: 10px; font-size: 0.96rem; display: flex; gap: 12px; align-items: center; }
+.outcome .cb { width: 22px; height: 22px; flex: none; }
+.open .outcome .cb { animation: roll 0.8s var(--ease) both; }
+@keyframes roll { from { transform: translateX(-30px) rotate(-360deg); opacity: 0; } to { transform: none; opacity: 1; } }
+.reveal-btn { margin-top: 14px; padding: 8px 18px; font-size: 0.88rem; }
+.lesson { margin-top: 34px; font-size: 1.12rem; border-left: 4px solid var(--teal); padding-left: 18px; }
+
+/* ---------- stability ---------- */
+.legend { display: flex; flex-wrap: wrap; gap: 18px; font-size: 0.88rem; color: var(--ink-soft); margin-top: 10px; }
+.legend span::before { content: ""; display: inline-block; width: 12px; height: 12px; margin-right: 6px; vertical-align: -1px; border-radius: 2px; }
+.legend .lb::before { background: var(--teal); }
+.legend .lw::before { background: var(--ink); background-image: repeating-linear-gradient(45deg, transparent 0 3px, rgba(255,255,255,.45) 3px 5px); }
+.legend .lr::before { background: var(--grey); opacity: .6; }
+.corr { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 26px; max-width: 760px; }
+.corr > div { background: var(--ink); color: #fff; border-radius: 16px; padding: 20px 22px; }
+.corr b { font-size: 2.4rem; display: block; line-height: 1.05; }
+.corr span { font-size: 0.88rem; color: #BFD3EE; }
+.meter { height: 6px; border-radius: 3px; background: rgba(255,255,255,.15); margin-top: 14px; overflow: hidden; }
+.meter i { display: block; height: 100%; background: linear-gradient(90deg, var(--teal-bright), var(--gold-bright)); border-radius: 3px; transform-origin: 0 50%; }
+.meter-scale { display: flex; justify-content: space-between; font-size: 0.75rem; color: #BFD3EE; margin-top: 4px; }
+
+/* ---------- closing ---------- */
+.closing { background: var(--ink); color: #fff; padding-block: 80px; position: relative; overflow: hidden; }
+.closing .glow { position: absolute; width: 520px; height: 520px; left: -160px; bottom: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(226,179,78,.22), transparent 65%); }
+.closing h2 { color: #fff; }
+.closing p { color: #D5E0F0; }
+.closing .btn { background: var(--teal-bright); border-color: var(--teal-bright); color: var(--ink-2); }
+.closing .btn.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+.closing .btn:hover { background: var(--gold-bright); border-color: var(--gold-bright); color: var(--ink-2); }
+
+/* ---------- motion (only when allowed; content is visible without it) ---------- */
+.motion .rise { opacity: 0; transform: translateY(34px); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: var(--d, 0s); }
+.motion .rise.in { opacity: 1; transform: none; }
+.motion .grow { transform: scaleX(0); transition: transform 1.2s var(--ease); transition-delay: var(--d, 0s); }
+.motion .grow.in { transform: scaleX(1); }
+.motion svg .grow { transform-box: fill-box; transform-origin: 0 50%; }
+.motion .drop { opacity: 0; transform: translateY(-14px); transition: opacity .6s var(--ease), transform .6s var(--ease); transition-delay: var(--d, .6s); }
+.motion .drop.in { opacity: 1; transform: none; }
+.motion h1 .w { opacity: 0; transform: translateY(0.45em) rotate(2deg); animation: word .9s var(--ease) forwards; animation-delay: calc(var(--i) * 90ms + 150ms); }
+@keyframes word { to { opacity: 1; transform: none; } }
+.motion .ball .spin { animation: spin 26s linear infinite; }
+.motion .ball .seam { stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 2.4s .5s var(--ease) forwards; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.motion .cue svg { animation: bob 1.8s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateY(5px); } }
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .ball { max-width: 200px; justify-self: start; order: -1; }
+  .ev-grid, .compare { grid-template-columns: minmax(0, 1fr); }
+  .dots { display: none; }
+}
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .hero { padding-block: 64px 44px; }
+  .chapter { padding-block: 72px; }
+  .chap-head { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .stats { grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: 36px; }
+  .tens-tabs { display: flex; }
+  .tens { grid-template-columns: minmax(0, 1fr); margin-top: 16px; }
+  .tens > div[hidden] { display: none !important; }
+  .tens h3 { display: none; }
+  .elig { grid-template-columns: minmax(0, 1fr); }
+  .tablewrap { display: none; }
+  .cards { display: block; }
+  .corr { grid-template-columns: minmax(0, 1fr); }
+  .dball { grid-template-columns: minmax(0, 1fr); }
+  .scen { padding: 20px; }
+}
+@media (min-width: 641px) { .tens > div[hidden] { display: block !important; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><i id="prog"></i></div>
+<nav class="dots" aria-label="Chapters">
+  <a href="#top" data-for="top" class="dark"><span>The answer</span></a>
+  <a href="#lists" data-for="lists"><span>Top tens</span></a>
+  <a href="#method" data-for="method"><span>Method</span></a>
+  <a href="#evidence" data-for="evidence"><span>Evidence</span></a>
+  <a href="#situations" data-for="situations"><span>Before the ball</span></a>
+  <a href="#stability" data-for="stability"><span>Stability</span></a>
+</nav>
+
+<main>
+<!-- ================= HERO ================= -->
+<header class="hero" id="top" data-dark>
+  <div class="glow" id="glow"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Final selections · Round 1</div>
+        <h1 id="title">Who delivers under pressure?</h1>
+        <p class="byline">Dev Uppal · SupeRR Selector Season 2 · Round 1</p>
+        <p class="lede">Before each delivery, I estimate how widely its plausible outcomes could shift the contest. I then measure what the batter or bowler contributed in that situation, allowing for the match state, the opposition and the size of their record.</p>
+      </div>
+      <svg class="ball" viewBox="0 0 300 300" aria-hidden="true">
+        <defs>
+          <radialGradient id="leather" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#2E5C8F"/><stop offset=".55" stop-color="#16325E"/><stop offset="1" stop-color="#0A1730"/></radialGradient>
+          <radialGradient id="shine" cx="32%" cy="26%" r="30%"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+        </defs>
+        <circle cx="150" cy="150" r="128" fill="url(#leather)"/>
+        <g class="spin">
+          <path class="seam" d="M62 60 C 120 110, 120 190, 62 240" fill="none" stroke="#3FC1B0" stroke-width="5" stroke-linecap="round"/>
+          <path class="seam" d="M238 60 C 180 110, 180 190, 238 240" fill="none" stroke="#3FC1B0" stroke-width="5" stroke-linecap="round"/>
+          <path d="M74 66 C 128 114, 128 186, 74 234" fill="none" stroke="#E2B34E" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+          <path d="M226 66 C 172 114, 172 186, 226 234" fill="none" stroke="#E2B34E" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+        </g>
+        <circle cx="150" cy="150" r="128" fill="url(#shine)"/>
+      </svg>
+    </div>
+    <div class="stats">
+      <div class="rise" style="--d:.5s"><b data-count="603">603</b><span>matches scored</span></div>
+      <div class="rise" style="--d:.62s"><b data-count="143813">143,813</b><span>delivery events</span></div>
+      <div class="rise" style="--d:.74s"><b data-count="33923">33,923</b><span>high-pressure events</span></div>
+    </div>
+    <a class="cue" href="#lists"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>Scroll to the selections</a>
+  </div>
+</header>
+
+<!-- ================= TOP TENS ================= -->
+<section class="chapter" id="lists" aria-labelledby="h-lists">
+  <div class="wrap">
+    <div class="chap-head rise">
+      <div class="chap-no" aria-hidden="true">01</div>
+      <div><div class="kicker">The answer</div><h2 id="h-lists">The two top tens</h2>
+      <p class="intro prose">Ranked by estimated contribution on high-pressure deliveries, 2023 to 2026.</p></div>
+    </div>
+    <div class="tablist tens-tabs" role="tablist" aria-label="Top ten lists">
+      <button class="tab" role="tab" id="tab-bat" aria-controls="list-bat" aria-selected="true">Batting</button>
+      <button class="tab" role="tab" id="tab-bowl" aria-controls="list-bowl" aria-selected="false" tabindex="-1">Bowling</button>
+    </div>
+    <div class="tens">
+      <div id="list-bat" role="tabpanel" aria-labelledby="tab-bat"><h3>Batters</h3><ol id="ol-bat"></ol></div>
+      <div id="list-bowl" role="tabpanel" aria-labelledby="tab-bowl"><h3>Bowlers</h3><ol id="ol-bowl"></ol></div>
+    </div>
+    <p class="prose firstnote rise">Tim David has the highest estimated batting contribution under pressure. Virat Kohli leads if batters are ranked by the lower end of the uncertainty range instead. Mark Adair leads the bowling list under both rules.</p>
+    <div class="actions rise">
+      <a class="btn" href="Dev_Uppal_SupeRR_Selector_Round_1.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download report (PDF)</a>
+      <a class="btn ghost" href="Dev_Uppal_SupeRR_Selector_Round_1.pdf" target="_blank" rel="noopener">Open report</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= METHOD ================= -->
+<section class="chapter" id="method" aria-labelledby="h-method">
+  <div class="wrap">
+    <div class="chap-head rise">
+      <div class="chap-no" aria-hidden="true">02</div>
+      <div><div class="kicker">The method</div><h2 id="h-method">How a delivery becomes a player score</h2>
+      <p class="intro prose">Pressure is labelled before the ball is bowled, so the outcome can never decide whether a delivery counted.</p></div>
+    </div>
+    <ol class="timeline" id="timeline">
+      <span class="fill" aria-hidden="true"></span>
+      <li class="rise"><span class="n">1</span><div><h3>Estimate the stakes before the ball</h3><p>Innings-specific models estimate each side's expected result points (win 1, tie 0.5, loss 0) from the score, wickets, balls used, venue, team strength and target. Each scored year uses models fitted only to earlier years.</p></div></li>
+      <li class="rise"><span class="n">2</span><div><h3>Flag the high-pressure deliveries</h3><p>A ball is high pressure when the spread of result prospects across its plausible outcomes reaches the historical 75th percentile for that innings. The same pre-ball label applies to batter and bowler.</p></div></li>
+      <li class="rise"><span class="n">3</span><div><h3>Measure contribution against the situation</h3><p>Runs and wickets are valued against a scoreless, wicketless ball, then compared with what was historically expected in the same context: innings phase, opponent history and free-hit status.</p></div></li>
+      <li class="rise"><span class="n">4</span><div><h3>Estimate, compare and rank</h3><p>Each player's pressure performance P is estimated together with their ordinary baseline, pulled toward zero when pressure evidence is thin, and ranked. A conservative rank uses the lower 10th percentile across 1,000 resamples.</p></div></li>
+    </ol>
+    <div class="elig" aria-label="Eligibility criteria">
+      <div class="rise" style="--d:0s"><b data-count="100">100</b><span>pressure balls</span></div>
+      <div class="rise" style="--d:.1s"><b data-count="10">10</b><span>pressure-exposed matches</span></div>
+      <div class="rise" style="--d:.2s"><b data-count="150">150</b><span>ordinary balls</span></div>
+    </div>
+    <p class="prose rise">Records from 2022 initialise the historical reference. The evaluated sample covers the supplied IPL and T20I matches from 2023 to 2026.</p>
+    <details class="method prose rise">
+      <summary>Method details</summary>
+      <dl>
+        <dt>Estimate the stakes</dt><dd>Separate models for each innings estimate expected regulation result points (win = 1, tie = 0.5, loss = 0). Inputs include score, wickets, balls used, venue, team strength and the chase target. Each scored year uses models fitted to earlier years.</dd>
+        <dt>Label the delivery</dt><dd>Estimate the spread (standard deviation) of result prospects across plausible next-ball outcomes. A ball qualifies when that spread reaches the historical 75th percentile for its innings. The same pre-ball label applies to both roles.</dd>
+        <dt>Attribute the outcome</dt><dd>Value attributed runs and wickets against a scoreless, wicketless event consuming the same legal-ball resource. Batters receive batter runs and dismissal costs. Bowling credit includes charged runs, credited wickets and the cost of granting a free hit. Run-outs earn no bowler wicket credit.</dd>
+        <dt>Compare like situations</dt><dd>Subtract a historical reference contribution conditional on context, including innings phase, opponent history and free-hit status. Positive residual credit means the player beat that reference on the delivery.</dd>
+        <dt>Estimate player performance</dt><dd>Estimate an ordinary baseline and the pressure difference jointly. Pull the difference toward zero when pressure evidence is sparse, then shrink both estimates by the same total-exposure factor. Pressure score P = ordinary baseline + uplift.</dd>
+        <dt>Rank and qualify</dt><dd>Order by estimated P, in adjusted result-point credit per 100 exposure balls. A separate conservative rank uses the tenth percentile of P over 1,000 competition-and-match resamples within years.</dd>
+        <dt>Data rules</dt><dd>Completed regulation ties are included. Revised, incomplete and anomalous games are excluded. Pressure measures competitive stakes; psychological stress is not observed.</dd>
+      </dl>
+    </details>
+  </div>
+</section>
+
+<!-- ================= EVIDENCE ================= -->
+<section class="chapter" id="evidence" aria-labelledby="h-ev">
+  <div class="wrap">
+    <div class="chap-head rise">
+      <div class="chap-no" aria-hidden="true">03</div>
+      <div><div class="kicker">The evidence</div><h2 id="h-ev">Inspect the evidence behind each selection</h2>
+      <p class="intro prose">Compare the model's ranking with a conservative reading of the same estimate and with a plain scorecard benchmark.</p></div>
+    </div>
+    <div class="tablist rise" role="tablist" aria-label="Evidence role">
+      <button class="tab" role="tab" id="ev-bat" aria-controls="ev-panel" aria-selected="true">Batting</button>
+      <button class="tab" role="tab" id="ev-bowl" aria-controls="ev-panel" aria-selected="false" tabindex="-1">Bowling</button>
+    </div>
+    <div id="ev-panel" role="tabpanel" aria-labelledby="ev-bat">
+      <div class="ev-grid">
+        <div style="min-width:0" class="rise">
+          <div class="tablewrap"><table aria-describedby="defs">
+            <thead><tr><th class="num">Final<br>rank</th><th>Player</th><th class="num">Pressure<br>balls</th><th class="num">Pressure<br>performance P</th><th class="num">Uplift<br>U</th><th class="num">Conservative<br>rank</th><th class="num">Benchmark<br>rank</th></tr></thead>
+            <tbody id="ev-body"></tbody>
+          </table></div>
+          <ul class="cards" id="ev-cards"></ul>
+        </div>
+        <aside class="defs rise" id="defs" aria-label="Definitions" style="--d:.15s">
+          <dl>
+            <dt>Final rank</dt><dd>Order by estimated pressure performance P.</dd>
+            <dt>Conservative rank</dt><dd>Order by the lower 10th percentile of P across 1,000 resamples of competitions and matches.</dd>
+            <dt>Benchmark rank</dt><dd id="def-bench"></dd>
+            <dt>P</dt><dd>Adjusted result-point credit per 100 exposure balls.</dd>
+            <dt>U</dt><dd>How far P exceeds the player's ordinary baseline.</dd>
+          </dl>
+        </aside>
+      </div>
+      <div class="compare">
+        <div class="rise">
+          <h3 id="iv-title"></h3>
+          <div class="chart" id="iv-chart"></div>
+          <p class="caption small">Units: P, adjusted result-point credit per 100 exposure balls. Band: 10th to 90th percentile over 1,000 resamples. Dashed line: zero.</p>
+          <p class="caption" id="iv-cap"></p>
+        </div>
+        <div class="rise" style="--d:.12s">
+          <h3 id="case-title"></h3>
+          <p class="small" id="case-text" style="margin-top:10px"></p>
+          <div class="balls" id="case-balls"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SITUATIONS ================= -->
+<section class="chapter" id="situations" aria-labelledby="h-sit">
+  <div class="wrap">
+    <div class="chap-head rise">
+      <div class="chap-no" aria-hidden="true">04</div>
+      <div><div class="kicker">Before the ball</div><h2 id="h-sit">What pressure looks like before the ball</h2>
+      <p class="intro prose">Each bar is the spread of the batting side's result prospects across plausible next-ball outcomes. The navy marker is the historical cutoff for that innings, and all three bars share one scale. Read the situation and its label, then reveal the delivery.</p></div>
+    </div>
+    <div class="scens" id="scens"></div>
+    <p class="prose lesson rise">Late overs alone do not create pressure. When a chase is nearly settled, even a boundary barely moves the likely result. In the first innings, wickets and scoring chances can shift the projected result well before a target exists.</p>
+  </div>
+</section>
+
+<!-- ================= STABILITY ================= -->
+<section class="chapter" id="stability" aria-labelledby="h-stab">
+  <div class="wrap">
+    <div class="chap-head rise">
+      <div class="chap-no" aria-hidden="true">05</div>
+      <div><div class="kicker">Stress test</div><h2 id="h-stab">How stable the selections are</h2>
+      <p class="intro prose">I recalculated both lists under different pressure cutoffs, evidence requirements and model refits. Each bar counts how many of the original ten kept a top-ten place.</p></div>
+    </div>
+    <div class="chart rise" id="stab"></div>
+    <div class="legend"><span class="lb">Batting</span><span class="lw">Bowling (hatched)</span><span class="lr">Lighter section: range across refits</span></div>
+    <div class="prose rise" style="margin-top:26px">
+      <p>The batting list holds 8 of 10 under every change tested, and 8 to 9 across four historical refits. The bowling order is more sensitive to modelling choices: it keeps between 4 and 8 of its ten across refits.</p>
+      <p>Switching from estimated P to the conservative ordering keeps seven names in each top ten. Kohli moves from sixth to first in batting, and Ben Dwarshuis from 21st to third in bowling.</p>
+    </div>
+    <div class="corr">
+      <div class="rise"><b data-count="0.334" data-dec="3">0.334</b><span>Batting rank correlation, 2023–24 vs 2025–26 · 49 batters</span><div class="meter"><i class="grow" style="width:33.4%"></i></div><div class="meter-scale"><span>0</span><span>1</span></div></div>
+      <div class="rise" style="--d:.12s"><b data-count="0.136" data-dec="3">0.136</b><span>Bowling rank correlation, 2023–24 vs 2025–26 · 54 bowlers</span><div class="meter"><i class="grow" style="width:13.6%"></i></div><div class="meter-scale"><span>0</span><span>1</span></div></div>
+    </div>
+    <p class="prose small muted rise" style="margin-top:16px">Among players with enough exposure in both periods, batting order shows some persistence; bowling order shows little. Expected-result models beat a constant baseline in all eight year-by-innings evaluations. Player comparisons also depend on scoring attribution, unequal roles and opponent adjustment.</p>
+  </div>
+</section>
+
+<!-- ================= CLOSING ================= -->
+<footer class="closing" aria-labelledby="h-close">
+  <div class="glow"></div>
+  <div class="wrap" style="position:relative">
+    <h2 id="h-close" class="rise">Tim David and Mark Adair lead the pressure lists.</h2>
+    <p class="prose rise" style="margin-top:16px">Data: the six organiser-supplied CSV files; dates and matches follow that snapshot. The supporting evidence lists all eligible players, the exact submission order, scenario overlaps and delivery identifiers for every example.</p>
+    <div class="actions rise">
+      <a class="btn" href="Dev_Uppal_SupeRR_Selector_Round_1.pdf" download>Download report (PDF)</a>
+      <a class="btn ghost" href="Dev_Uppal_SupeRR_Selector_Round_1.pdf" target="_blank" rel="noopener">Open report</a>
+      <a class="btn ghost" href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+</main>
+
+<script>
+const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (!REDUCE && "IntersectionObserver" in window) document.documentElement.classList.add("motion");
+const MOTION = document.documentElement.classList.contains("motion");
+
+const BAT = [[1,"Tim David",363,.446,.267,3,25],[2,"Rinku Singh",357,.399,.331,5,24],[3,"Shreyas Iyer",346,.324,.197,9,3],[4,"Namboori Tilak Varma",545,.324,.287,2,13],[5,"Glenn Maxwell",160,.319,.221,50,29],[6,"Virat Kohli",338,.271,.132,1,23],[7,"Shubman Gill",276,.256,.168,6,8],[8,"Ashutosh Sharma",123,.235,.103,15,46],[9,"Suryakumar Yadav",409,.219,.153,7,14],[10,"Rohit Sharma",114,.210,.119,13,5]];
+const BOWL = [[1,"Mark Adair",115,.332,.259,1,13],[2,"Josh Hazlewood",204,.220,.140,5,16],[3,"Sunil Narine",248,.208,.085,2,12],[4,"Spencer Johnson",104,.203,.193,19,38],[5,"Taskin Ahmed",164,.189,.141,4,2],[6,"Harpreet Brar",127,.175,.151,8,6],[7,"Jimmy Neesham",114,.171,.112,7,24],[8,"Sikandar Raza",181,.149,.153,15,9],[9,"Harshit Rana",202,.145,.080,47,30],[10,"Abrar Ahmed",168,.144,.052,10,11]];
+const ROLE = {
+  bat: { rows: BAT, bench: "Equal-weight percentile ranks for higher strike rate and fewer dismissals per ball on pressure deliveries (104 eligible batters). It shares 3 of the model's top ten.",
+    iv: {name: "Tim David", lo: .076, est: .446, hi: .784, cap: "Tim David leads on estimated batting performance (P = 0.446), but the 10th–90th percentile band is wide. Virat Kohli, sixth on the estimate, leads under the conservative rule because his lower end is higher."},
+    caseTitle: "Why the scorecard disagrees: Ashutosh Sharma",
+    caseText: "Model rank 8, benchmark rank 46. Across 123 pressure balls he scored 228 runs and was dismissed 9 times. These two legal deliveries show the extremes of his adjusted credit as striker.",
+    balls: [["Delhi Capitals v Lucknow Super Giants · 24 Mar 2025","Innings 2 · 205/9 · 4 balls left · chasing 210","Shahbaz Ahmed to Ashutosh Sharma: 6 team runs",.9099],
+            ["Gujarat Titans v Punjab Kings · 4 Apr 2024","Innings 2 · 193/6 · 6 balls left · chasing 200","Darshan Nalkande to Ashutosh Sharma: 0 team runs, caught",-.2706]] },
+  bowl: { rows: BOWL, bench: "Equal-weight percentile ranks for lower economy and more credited wickets per legal ball on pressure deliveries (105 eligible bowlers). It shares 3 of the model's top ten.",
+    iv: {name: "Mark Adair", lo: .043, est: .332, hi: .635, cap: "Mark Adair leads under both the estimate and the conservative rule: his whole 10th–90th percentile band stays above zero. It is wide because it rests on 115 pressure balls."},
+    caseTitle: "Why the scorecard disagrees: Spencer Johnson",
+    caseText: "Model rank 4, benchmark rank 38. Across 104 pressure balls he conceded 163 runs and took 7 wickets. Both deliveries come from the same chase and show the extremes of his adjusted credit as bowler.",
+    balls: [["Gujarat Titans v Mumbai Indians · 24 Mar 2024","Innings 2 · 150/6 · 7 balls left · chasing 169","Spencer Johnson to Gerald Coetzee: 0 team runs, caught",.2503],
+            ["Gujarat Titans v Mumbai Indians · 24 Mar 2024","Innings 2 · 142/5 · 12 balls left · chasing 169","Spencer Johnson to Namboori Tilak Varma: 6 team runs",-.0552]] }
+};
+const SCEN = [
+  {title: "Competitive chase", hi: true, spread: .0604, cut: .0317, rp: .400, match: "Lucknow Super Giants v Punjab Kings", date: "15 Apr 2023", inn: 2, score: 149, wk: 7, balls: 9, target: 160, ball: "Mark Wood bowled to Harpreet Brar: 4 team runs."},
+  {title: "Nearly settled chase", hi: false, spread: .0009, cut: .0317, rp: .003, match: "Afghanistan v Pakistan", date: "27 Mar 2023", inn: 2, score: 115, wk: 9, balls: 12, target: 183, ball: "Zaman Khan bowled to Azmatullah Omarzai: 0 team runs."},
+  {title: "First-innings pressure", hi: true, spread: .0276, cut: .0208, rp: .541, match: "India v Sri Lanka", date: "5 Jan 2023", inn: 1, score: 138, wk: 4, balls: 26, target: null, ball: "Umran Malik bowled to Charith Asalanka: 0 team runs, caught."},
+];
+const STAB = [["Pressure at the 70th percentile", 8, 8, 8, 8], ["Pressure at the 80th percentile", 8, 8, 6, 6], ["Minimum 150 pressure balls", 8, 8, 6, 6], ["Four historical model refits", 8, 9, 4, 8]];
+
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const f3 = (v) => v.toFixed(3);
+const C = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+
+/* ---------- title words ---------- */
+(() => {
+  const h = $("#title"); const words = h.textContent.split(" ");
+  h.setAttribute("aria-label", h.textContent);
+  h.innerHTML = words.map((w, i) => `<span class="w" aria-hidden="true" style="--i:${i}">${esc(w)}</span>`).join(" ");
+})();
+
+/* ---------- reveal on scroll ---------- */
+const io = MOTION ? new IntersectionObserver((entries) => {
+  entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); onIn(e.target); io.unobserve(e.target); } });
+}, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }) : null;
+function watch(root = document) {
+  $$(".rise, .grow, .drop, [data-count], .tens li", root).forEach((el) => { if (io && !el.classList.contains("in")) io.observe(el); else el.classList.add("in"); });
+}
+function onIn(el) {
+  if (el.matches("[data-count]")) countUp(el);
+  $$("[data-count]", el).forEach(countUp);
+}
+function countUp(el) {
+  if (!MOTION || el.dataset.done) return; el.dataset.done = 1;
+  const end = parseFloat(el.dataset.count), dec = +(el.dataset.dec || 0), t0 = performance.now(), dur = 1400;
+  const fmt = (v) => dec ? v.toFixed(dec) : Math.round(v).toLocaleString("en-US");
+  const step = (t) => { const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 4); el.textContent = fmt(end * e); if (k < 1) requestAnimationFrame(step); else el.textContent = fmt(end); };
+  requestAnimationFrame(step);
+}
+
+/* ---------- top tens ---------- */
+function topList(rows, el) {
+  el.innerHTML = rows.map(([r, n], i) => `<li class="rise${r === 1 ? " first" : ""}" style="--d:${(i * 0.06).toFixed(2)}s"><span class="rk" aria-label="Rank ${r}">${r}</span><span>${esc(n)}</span>${r === 1 ? '<span class="tag1">First place</span>' : ""}</li>`).join("");
+}
+topList(BAT, $("#ol-bat")); topList(BOWL, $("#ol-bowl"));
+
+function tabs(group, onSelect) {
+  const btns = $$('[role="tab"]', group);
+  const select = (b, focus) => { btns.forEach((x) => { const on = x === b; x.setAttribute("aria-selected", on); x.tabIndex = on ? 0 : -1; }); if (focus) b.focus(); onSelect(b); };
+  btns.forEach((b, i) => {
+    b.addEventListener("click", () => select(b));
+    b.addEventListener("keydown", (e) => { if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); select(btns[(i + (e.key === "ArrowRight" ? 1 : btns.length - 1)) % btns.length], true); } });
+  });
+}
+tabs($('[aria-label="Top ten lists"]'), (b) => { $("#list-bat").hidden = b.id !== "tab-bat"; $("#list-bowl").hidden = b.id !== "tab-bowl"; });
+$("#list-bowl").hidden = true;
+
+/* ---------- evidence ---------- */
+let CURRENT = ROLE.bat;
+function intervalSVG({name, lo, est, hi}, W) {
+  W = Math.max(300, Math.round(W || 520)); const L = 20, R = 22, x = (v) => L + (W - L - R) * v / 0.8;
+  const ticks = [0, .2, .4, .6, .8].map((t) => `<line x1="${x(t)}" y1="88" x2="${x(t)}" y2="94" stroke="${C("--rule")}" stroke-width="1.5"/><text x="${x(t)}" y="110" font-size="13" fill="${C("--ink-soft")}" text-anchor="middle">${t.toFixed(1)}</text>`).join("");
+  return `<svg viewBox="0 0 ${W} 116" width="${W}" height="116" role="img" aria-label="${esc(name)}: estimate ${f3(est)}, 10th percentile ${f3(lo)}, 90th percentile ${f3(hi)}">
+    <line x1="${L}" y1="88" x2="${W - R}" y2="88" stroke="${C("--rule")}" stroke-width="1.5"/>${ticks}
+    <line x1="${x(0)}" y1="34" x2="${x(0)}" y2="84" stroke="${C("--grey")}" stroke-dasharray="4 4" stroke-width="1.5"/>
+    <rect class="grow" style="--d:.2s" x="${x(lo)}" y="54" width="${x(hi) - x(lo)}" height="14" rx="7" fill="${C("--teal-soft")}" stroke="${C("--teal")}" stroke-width="1.5"/>
+    <g class="drop" style="--d:1.1s"><circle cx="${x(est)}" cy="61" r="10" fill="${C("--ink")}" stroke="#fff" stroke-width="3"/>
+    <text x="${x(est)}" y="40" font-size="14" font-weight="700" fill="${C("--ink")}" text-anchor="middle">Estimate ${f3(est)}</text></g>
+    <text x="${x(lo)}" y="44" font-size="13" font-weight="700" fill="${C("--teal")}" text-anchor="middle">${f3(lo)}</text>
+    <text x="${x(hi)}" y="44" font-size="13" font-weight="700" fill="${C("--teal")}" text-anchor="middle">${f3(hi)}</text>
+  </svg>`;
+}
+function renderEvidence(role) {
+  const R = ROLE[role]; CURRENT = R;
+  $("#ev-body").innerHTML = R.rows.map(([r, n, b, p, u, c, bm], i) => `<tr class="${r === 1 ? "first" : ""}"><td class="num"><b>${r}</b></td><td class="nm">${esc(n)}</td><td class="num">${b}</td><td class="num"><span class="pcell"><span class="pbar" aria-hidden="true"><i class="grow" style="width:${(p / 0.5 * 100).toFixed(1)}%;--d:${(i * 0.05).toFixed(2)}s"></i></span><b>${f3(p)}</b></span></td><td class="num">${f3(u)}</td><td class="num">${c}</td><td class="num">${bm}</td></tr>`).join("");
+  $("#ev-cards").innerHTML = R.rows.map(([r, n, b, p, u, c, bm]) => `<li class="${r === 1 ? "first" : ""}"><details><summary><span class="rk">${r}</span><span>${esc(n)}</span><span class="chev">Details</span></summary><dl><dt>Pressure balls</dt><dd>${b}</dd><dt>Pressure performance P</dt><dd>${f3(p)}</dd><dt>Uplift U</dt><dd>${f3(u)}</dd><dt>Conservative rank</dt><dd>${c}</dd><dt>Benchmark rank</dt><dd>${bm}</dd></dl></details></li>`).join("");
+  $("#def-bench").textContent = R.bench;
+  $("#iv-title").textContent = `How certain is the lead for ${R.iv.name}?`;
+  $("#iv-chart").innerHTML = intervalSVG(R.iv, $("#iv-chart").clientWidth);
+  $("#iv-cap").textContent = R.iv.cap;
+  $("#case-title").textContent = R.caseTitle;
+  $("#case-text").textContent = R.caseText;
+  $("#case-balls").innerHTML = R.balls.map(([m, s, a, cr]) => `<div class="dball ${cr > 0 ? "pos" : "neg"}"><div class="cr">${cr > 0 ? "+" : "−"}${Math.abs(cr).toFixed(4)}<small>result points</small></div><div><b>${esc(m)}</b><br>${esc(s)}<br>${esc(a)}</div></div>`).join("");
+  $("#ev-panel").setAttribute("aria-labelledby", role === "bat" ? "ev-bat" : "ev-bowl");
+  watch($("#ev-panel"));
+}
+tabs($('[aria-label="Evidence role"]'), (b) => renderEvidence(b.id === "ev-bat" ? "bat" : "bowl"));
+
+/* ---------- scenarios ---------- */
+function spreadSVG(s, W) {
+  W = Math.max(300, Math.round(W || 640)); const L = 2, R = 2, x = (v) => L + (W - L - R) * v / 0.07;
+  const fill = s.hi ? C("--teal") : C("--grey");
+  const tv = W < 520 ? [0, .02, .04, .06] : [0, .01, .02, .03, .04, .05, .06, .07];
+  const ticks = tv.map((t) => `<text x="${x(t)}" y="86" font-size="12" fill="${C("--ink-soft")}" text-anchor="${t === 0 ? "start" : (t === .07 ? "end" : "middle")}">${t.toFixed(2)}</text>`).join("");
+  return `<svg viewBox="0 0 ${W} 92" width="${W}" height="92" role="img" aria-label="Spread ${s.spread.toFixed(4)} against cutoff ${s.cut.toFixed(4)}">
+    <rect x="${L}" y="26" width="${W - L - R}" height="22" rx="11" fill="${C("--paper-2")}"/>
+    <rect class="grow" style="--d:.15s" x="${L}" y="26" width="${Math.max(x(s.spread) - L, 8)}" height="22" rx="11" fill="${fill}"/>
+    <g class="drop" style="--d:.9s"><line x1="${x(s.cut)}" y1="16" x2="${x(s.cut)}" y2="58" stroke="${C("--ink")}" stroke-width="3"/>
+    <text x="${x(s.cut)}" y="12" font-size="13" font-weight="700" fill="${C("--ink")}" text-anchor="middle">cutoff ${s.cut.toFixed(4)}</text></g>
+    <text x="${W - 4}" y="68" font-size="13" font-weight="700" fill="${C("--ink")}" text-anchor="end">spread ${s.spread.toFixed(4)}</text>
+    ${ticks}
+  </svg>`;
+}
+$("#scens").innerHTML = SCEN.map((s, i) => `<article class="scen rise" style="--d:${(i * 0.08).toFixed(2)}s" aria-labelledby="sc${i}">
+  <div class="scen-top"><h3 id="sc${i}">${s.title}</h3><span class="pill ${s.hi ? "hi" : "lo"}">${s.hi ? "High pressure" : "Ordinary pressure"}</span></div>
+  <div class="facts">
+    <span>${esc(s.match)} · ${s.date}</span><span>Innings <b>${s.inn}</b></span><span>Score <b>${s.score}/${s.wk}</b></span><span><b>${s.balls}</b> balls left</span>
+    ${s.target ? `<span>Target <b>${s.target}</b></span>` : `<span>No target yet</span>`}
+    <span>Batting-side result points <b>${s.rp.toFixed(3)}</b> <span class="muted">(0 to 1)</span></span>
+  </div>
+  <div class="chart spread" data-i="${i}"></div>
+  <button class="btn ghost reveal-btn" type="button" aria-expanded="false" aria-controls="out${i}">Reveal delivery</button>
+  <div class="outcome-wrap" id="out${i}"><div><p class="outcome"><svg class="cb" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="${C("--ink")}"/><path d="M7 5c3 4 3 10 0 14M17 5c-3 4-3 10 0 14" stroke="${C("--teal-bright")}" stroke-width="1.6" fill="none"/></svg><span>${esc(s.ball)} <span class="muted">The label above was fixed before this happened.</span></span></p></div></div>
+</article>`).join("");
+$$(".reveal-btn").forEach((b) => {
+  const out = document.getElementById(b.getAttribute("aria-controls"));
+  out.inert = true;
+  b.addEventListener("click", () => {
+    const open = !out.classList.contains("open");
+    out.classList.toggle("open", open); out.inert = !open;
+    b.setAttribute("aria-expanded", open); b.textContent = open ? "Hide delivery" : "Reveal delivery";
+  });
+});
+
+/* ---------- stability ---------- */
+function drawStab() {
+  const W = Math.max(300, Math.round($("#stab").clientWidth || 760)), narrow = W < 560, LBL = narrow ? 0 : 270, R = 56, row = narrow ? 88 : 66;
+  const x = (v) => LBL + (W - LBL - R) * v / 10, H = STAB.length * row + 34 + (narrow ? 22 : 0);
+  let g = "";
+  [0, 2, 4, 6, 8, 10].forEach((t) => { g += `<line x1="${x(t)}" y1="0" x2="${x(t)}" y2="${H - 26}" stroke="${C("--rule")}"/><text x="${x(t)}" y="${H - 8}" font-size="13" fill="${C("--ink-soft")}" text-anchor="middle">${t}</text>`; });
+  STAB.forEach(([lab, b1, b2, w1, w2], i) => {
+    const y = i * row + 8 + (narrow ? 22 : 0);
+    g += `<text x="0" y="${narrow ? y - 6 : y + 27}" font-size="15" fill="${C("--ink")}">${lab}</text>`;
+    const bar = (yy, a, b, col, hatch, txt, d) => `<rect class="grow" style="--d:${d}s" x="${x(0)}" y="${yy}" width="${x(a) - x(0)}" height="19" rx="3" fill="${hatch ? "url(#hatch)" : col}"/>` +
+      (b > a ? `<rect class="grow" style="--d:${d + .5}s" x="${x(a)}" y="${yy}" width="${x(b) - x(a)}" height="19" rx="3" fill="${col}" opacity=".35"/>` : "") +
+      `<text class="drop" style="--d:${d + .9}s" x="${x(b) + 8}" y="${yy + 15}" font-size="14" font-weight="700" fill="${C("--ink")}">${txt}</text>`;
+    g += bar(y + 4, b1, b2, C("--teal"), false, b2 > b1 ? `${b1}–${b2}` : b1, i * 0.12);
+    g += bar(y + 27, w1, w2, C("--ink"), true, w2 > w1 ? `${w1}–${w2}` : w1, i * 0.12 + .06);
+  });
+  $("#stab").innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Original top-ten players retained: ${STAB.map(([l, a, b, c, d]) => `${l}, batting ${b > a ? a + " to " + b : a}, bowling ${d > c ? c + " to " + d : c}`).join("; ")}">
+    <defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="${C("--ink")}"/><rect width="2" height="6" fill="#fff" opacity=".35"/></pattern></defs>${g}</svg>`;
+}
+
+/* ---------- charts at real width ---------- */
+function drawCharts() {
+  $$(".chart.spread").forEach((el) => { el.innerHTML = spreadSVG(SCEN[+el.dataset.i], el.clientWidth); });
+  $("#iv-chart").innerHTML = intervalSVG(CURRENT.iv, $("#iv-chart").clientWidth);
+  drawStab();
+  watch();
+}
+renderEvidence("bat");
+drawCharts();
+let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { drawCharts(); $$(".grow, .drop").forEach((el) => el.classList.add("in")); }, 150); });
+
+/* ---------- scroll progress, timeline fill, parallax, chapter dots ---------- */
+const prog = $("#prog"), tl = $("#timeline"), fill = $(".timeline .fill"), steps = $$("#timeline li"), glow = $("#glow");
+let ticking = false;
+function onScroll() {
+  ticking = false;
+  const h = document.documentElement, max = h.scrollHeight - innerHeight;
+  prog.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+  const r = tl.getBoundingClientRect(), mid = innerHeight * 0.6;
+  const p = MOTION ? Math.max(0, Math.min(1, (mid - r.top) / r.height)) : 1;
+  fill.style.setProperty("--p", p.toFixed(3));
+  steps.forEach((li) => li.classList.toggle("lit", li.getBoundingClientRect().top + 25 < mid || !MOTION));
+  if (MOTION && glow) glow.style.transform = `translateY(${scrollY * 0.25}px)`;
+}
+addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+onScroll();
+
+const dots = $$(".dots a");
+const spy = new IntersectionObserver((entries) => {
+  entries.forEach((e) => { if (e.isIntersecting) dots.forEach((d) => d.classList.toggle("on", d.dataset.for === e.target.id)); });
+}, { rootMargin: "-45% 0px -50% 0px" });
+["top", "lists", "method", "evidence", "situations", "stability"].forEach((id) => spy.observe(document.getElementById(id)));
+
+/* safety: never leave content hidden */
+setTimeout(() => $$(".rise, .grow, .drop").forEach((el) => { const r = el.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) el.classList.add("in"); }), 2500);
+</script>
+</body>
+</html>
